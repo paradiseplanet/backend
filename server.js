@@ -367,6 +367,6 @@ app.get("/get-business", (req, res) => {
 
 });
 
-app.listen(2000, () => {
+app.listen(process.env.port|| 2000, () => {
   console.log("Server is Runing On port 2000");
 });
