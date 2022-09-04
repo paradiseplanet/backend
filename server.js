@@ -367,8 +367,8 @@ app.get("/get-business", (req, res) => {
 
 });
 
-let PORT = process.env.port?process.env.port:2000;
-
-app.listen(PORT, () => {
-  console.log("Server is Runing On port"+PORT);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, err => {
+  if(err) throw err;
+  console.log("%c Server running", "color: green");
 });
