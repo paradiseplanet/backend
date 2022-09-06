@@ -10,6 +10,7 @@ var mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://paradiseplanet:100Mic10*@paradiseplanet.ev1vovz.mongodb.net/?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true});
 var fs = require('fs');
 var business = require("./model/business.js");
+var enquiry = require("./model/enquiry.js");
 var user = require("./model/user.js");
 
 var dir = './uploads';
@@ -179,6 +180,46 @@ function checkUserAndGenerateToken(data, req, res) {
     }
   });
 }
+
+/*Api to add enquiry */
+app.post("/add-enquiry", upload.any(), (req, res) => {
+  try {
+    if (rreq.body && req.body.name && req.body.email && req.body.mobile &&
+      req.body.message && req.body.businessId) {
+
+      let new_enquiry = new enquiry();
+      new_enquiry.name = req.body.name;
+      new_enquiry.email = req.body.email;
+      new_enquiry.mobile = req.body.mobile;
+      new_enquiry.message = req.body.message;
+      new_enquiry.business_id = req.body.businessId;
+      new_enquiry.save((err, data) => {
+        if (err) {
+          res.status(400).json({
+            errorMessage: err,
+            status: false
+          });
+        } else {
+          res.status(200).json({
+            status: true,
+            title: 'Enquiry Added successfully.'
+          });
+        }
+      });
+
+    } else {
+      res.status(400).json({
+        errorMessage: 'Add proper parameter first!',
+        status: false
+      });
+    }
+  } catch (e) {
+    res.status(400).json({
+      errorMessage: 'Something went wrong!',
+      status: false
+    });
+  }
+});
 
 /* Api to add business */
 app.post("/add-business", upload.any(), (req, res) => {
