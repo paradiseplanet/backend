@@ -82,7 +82,7 @@ app.post("/login", (req, res) => {
       user.find({ username: req.body.username }, (err, data) => {
         if (data.length > 0) {
 
-          if (bcrypt.compareSync(data[0].password, req.body.password)) {
+          if (data[0].password==req.body.password) {
             checkUserAndGenerateToken(data[0], req, res);
           } else {
 
