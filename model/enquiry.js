@@ -5,7 +5,7 @@ enquirySchema = new Schema( {
 	name: String,
     email : String,
     pnone : String,
-    message: Stringy,
+    message: String,
 	enquiry_id: Schema.ObjectId,
     business_id : String,
 	is_delete: { type: Boolean, default: false },
