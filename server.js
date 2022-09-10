@@ -184,7 +184,7 @@ function checkUserAndGenerateToken(data, req, res) {
 /*Api to add enquiry */
 app.post("/add-enquiry", upload.any(), (req, res) => {
   try {
-    if (rreq.body && req.body.name && req.body.email && req.body.mobile &&
+    if (req.body && req.body.name && req.body.email && req.body.mobile &&
       req.body.message && req.body.businessId) {
 
       let new_enquiry = new enquiry();
