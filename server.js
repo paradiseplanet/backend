@@ -82,7 +82,11 @@ app.post("/login", (req, res) => {
       user.find({ username: req.body.username }, (err, data) => {
         if (data.length > 0) {
 
+<<<<<<< HEAD
           if (data[0].password==req.body.password) {
+=======
+          if (data[0].password == req.body.password) {
+>>>>>>> 0afa916dd5daaca165984aca98fa9464e6f38684
             checkUserAndGenerateToken(data[0], req, res);
           } else {
 
