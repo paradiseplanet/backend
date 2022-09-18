@@ -421,8 +421,8 @@ app.post("/contact",(req,res)=>{
         var nodemailer = require('nodemailer');
 
       var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
+    service: 'gmail',
+   auth: {
     user: 'paradiseplanet22@gmail.com',
     pass: '100mic10'
   }
