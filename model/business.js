@@ -26,7 +26,7 @@ businessSchema = new Schema( {
 	ourHighlights:Array,
 	ourPackeges:Array,
 	ourGallery:Array,
-	user_id: Schema.ObjectId,
+	business_id: Schema.ObjectId,
 	is_delete: { type: Boolean, default: false },
 	date : { type : Date, default: Date.now }
 }),

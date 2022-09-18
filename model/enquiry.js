@@ -2,11 +2,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 enquirySchema = new Schema( {
+	enquiry_id: Schema.ObjectId,
 	name: String,
     email : String,
     pnone : String,
     message: String,
-	enquiry_id: Schema.ObjectId,
     business_id : String,
 	is_delete: { type: Boolean, default: false },
 	date : { type : Date, default: Date.now }
