@@ -4,8 +4,8 @@ const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var cors = require('cors');
 var multer = require('multer'),
-  bodyParser = require('body-parser'),
-  path = require('path');
+bodyParser = require('body-parser'),
+path = require('path');
 var mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://paradiseplanet:100Mic10*@paradiseplanet.ev1vovz.mongodb.net/?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology:true});
 var fs = require('fs');
