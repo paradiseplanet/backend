@@ -49,7 +49,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use("/", (req, res, next) => {
   try {
     console.log(req.path);
-    if (req.path == "/login" || req.path == "/register" || req.path == "/") {
+    if (req.path == "/login" || req.path == "/register" || req.path == "/" || req.path == "/contact") {
       next();
     } else {
       /* decode jwt token if authorized*/
@@ -414,71 +414,71 @@ app.get("/get-business", (req, res) => {
 
 });
 
-// app.post("/contact",(req,res)=>{
-//   {
-//     try {
-//       if ( req.body.name && req.body.email && req.body.phone && req.body.message) {
-
-//         var nodemailer = require('nodemailer');
-
-//       var transporter = nodemailer.createTransport({
-//     service: 'gmail',
-//    auth: {
-//     user: 'paradiseplanet22@gmail.com',
-//     pass: '100mic10'
-//   }
-// });
-
-// var mailOptions = {
-//   from: 'paradiseplanet22@gmail.com',
-//   to: 'paradiseplanet22@gmail.com',
-//   subject: 'Website Enquiry',
-//   text: 'name --> '+req.body.name + ' ' + 'email --> ' + req.body.email + 'phone --> ' + req.body.phome + 'message --> ' + req.body.message
-// };
-
-// transporter.sendMail(mailOptions, function(error, info){
-//   if (error) {
-//     console.log(error);
-//   } else {
-//     console.log('Email sent: ' + info.response);
-//   }
-// });
+app.post("/contact",(req,res)=>{
   
-//         let new_contact = new contact();
-//         new_contact.name = req.body.name;
-//         new_contact.email = req.body.email;
-//         new_contact.mobile = req.body.mobile;
-//         new_contact.messege = req.body.messege;
+  {
+    try {
+      if ( req.body.name && req.body.email && req.body.phone && req.body.message) {
+
+
+      var transporter = nodemailer.createTransport({
+    service: 'gmail',
+   auth: {
+    user: 'paradiseplanet22@gmail.com',
+    pass: '100mic10'
+  }
+});
+
+var mailOptions = {
+  from: 'paradiseplanet22@gmail.com',
+  to: 'paradiseplanet22@gmail.com',
+  subject: 'Website Enquiry',
+  text: 'name --> '+req.body.name + ' ' + 'email --> ' + req.body.email + 'phone --> ' + req.body.phome + 'message --> ' + req.body.message
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
+  }
+});
+  
+        let new_contact = new contact();
+        new_contact.name = req.body.name;
+        new_contact.email = req.body.email;
+        new_contact.mobile = req.body.mobile;
+        new_contact.messege = req.body.messege;
 
        
-//         new_contact.save((err, data) => {
-//           if (err) {
-//             res.status(400).json({
-//               errorMessage: err,
-//               status: false
-//             });
-//           } else {
-//             res.status(200).json({
-//               status: true,
-//               title: 'Message Sent successfully.'
-//             });
-//           }
-//         });
+        new_contact.save((err, data) => {
+          if (err) {
+            res.status(400).json({
+              errorMessage: err,
+              status: false
+            });
+          } else {
+            res.status(200).json({
+              status: true,
+              title: 'Message Sent successfully.'
+            });
+          }
+        });
   
-//       } else {
-//         res.status(400).json({
-//           errorMessage: 'Add proper parameter first!',
-//           status: false
-//         });
-//       }
-//     } catch (e) {
-//       res.status(400).json({
-//         errorMessage: 'Something went wrong!',
-//         status: false
-//       });
-//     }
-//   }
-// });
+      } else {
+        res.status(400).json({
+          errorMessage: 'Add proper parameter first!',
+          status: false
+        });
+      }
+    } catch (e) {
+      res.status(400).json({
+        errorMessage: 'Something went wrong!',
+        status: false
+      });
+    }
+  }
+});
 
 app.post("/")
 
