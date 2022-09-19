@@ -48,7 +48,10 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 app.use("/", (req, res, next) => {
   try {
-    console.log(req.path);
+    res.status(400).json({
+      errorMessage: 'Something went wrong!',
+      status: false
+    });
     if (req.path == "/login" || req.path == "/register" || req.path == "/" || req.path == "/contact") {
       next();
     } else {
